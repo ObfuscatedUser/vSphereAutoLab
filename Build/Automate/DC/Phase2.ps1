@@ -33,7 +33,7 @@ if (Test-Path B:\Automate\automate.ini) {
 	dsadd OU "ou=Groups,ou=LAB,DC=lab,DC=local"
 	dsadd Group "cn=Lab Staff,ou=Groups,ou=LAB,DC=lab,DC=local" -desc "All staff of the LAB"
 	dsadd OU "ou=Servers,ou=LAB,DC=lab,DC=local"
-	dsadd OU "ou=Workstationsou=LAB,DC=lab,DC=local"
+	dsadd OU "ou=Workstations,ou=LAB,DC=lab,DC=local"
 	dsadd user "cn=grace,ou=Users,ou=LAB,DC=lab,DC=local" -disabled no -pwd $AdminPWD -upn grace@lab.local -fn Grace -ln Hopper -display "Grace Hopper" -email grace@lab.local -memberof "cn=Lab Staff,ou=Groups,ou=LAB,DC=lab,DC=local"
 	dsadd user "cn=ada,ou=Users,ou=LAB,DC=lab,DC=local" -disabled no -pwd $AdminPWD -upn ada@lab.local -fn Ada -ln Lovelace -display "Ada Lovelace" -email ada@lab.local -memberof "cn=Lab Staff,ou=Groups,ou=LAB,DC=lab,DC=local"
 	dsadd user "cn=alan,ou=Users,ou=LAB,DC=lab,DC=local" -disabled no -pwd $AdminPWD -upn alan@lab.local -fn Alan -ln Turing -display "Alan Turing" -email alan@lab.local -memberof "cn=Lab Staff,ou=Groups,ou=LAB,DC=lab,DC=local"
