@@ -16,3 +16,7 @@ drop database vCloud51
 go
 drop database vCloud15
 go
+DROP DATABASE VeeamBackup
+GO
+DROP DATABASE VeeamOne
+GO
