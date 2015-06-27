@@ -467,6 +467,8 @@ if (Test-Path "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\sqlcmd.exe")
 		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDB.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
 		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBvCD51.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
 		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBvCD15.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
+		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBVeeamBackup.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
+		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBVeeamOne.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
 		regedit -s B:\Automate\DC\SQLTCP.reg
 	} elseif (Test-Path "B:\VIM_55\redist\SQLEXPR\SQLEXPR_x64_ENU.exe") {
 		$vc5SQL = $true
@@ -479,6 +481,8 @@ if (Test-Path "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\sqlcmd.exe")
 		Start-Process "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDB.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
 		Start-Process "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBvCD51.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
 		Start-Process "C:\Program Files\Microsoft SQL Server\100\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBvCD15.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
+		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBVeeamBackup.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
+		Start-Process "C:\Program Files\Microsoft SQL Server\110\Tools\Binn\sqlcmd.exe" -ArgumentList "-S dc\SQLEXPRESS -i B:\Automate\DC\MakeDBVeeamOne.txt" -RedirectStandardOutput c:\sqllog.txt -Wait
 		regedit -s B:\Automate\DC\SQLTCP.reg
 	} elseif (Test-Path "B:\VIM_51\redist\SQLEXPR\SQLEXPR_x64_ENU.exe") {
 		$vc5SQL = $true
@@ -568,7 +572,7 @@ Write-BuildLog "Make Win32Time authoritative for NTP time."
 reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time\Config /v AnnounceFlags /t REG_DWORD /d 0x05 /f
 w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:manual /reliable:yes /update
 
-Write-BuildLog "Clear System eventlog, erors to here are spurious"
+Write-BuildLog "Clear System eventlog, errors to here are spurious"
 Clear-EventLog -LogName System -confirm:$False
 
 Write-BuildLog "Setup Default web page."
