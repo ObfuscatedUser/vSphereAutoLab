@@ -75,7 +75,7 @@
                 <Credentials>
                     <Domain>lab.local</Domain>
                     <Password>VMware1!</Password>
-                    <Username>Administrator</Username>
+                    <Username>JoinUser</Username>
                 </Credentials>
                 <JoinDomain>lab.local</JoinDomain>
             </Identification>
@@ -111,11 +111,9 @@
             <fDenyTSConnections>false</fDenyTSConnections>
         </component>
         <component name="Microsoft-Windows-IE-InternetExplorer" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <TrustedSites>http://v1</TrustedSites>
-            <DisableAccelerators>true</DisableAccelerators>
-            <DisableOOBAccelerators>true</DisableOOBAccelerators>
+            <TrustedSites>https://*.lab.local;http://*.lab.local;http://v1</TrustedSites>
             <DisableFirstRunWizard>true</DisableFirstRunWizard>
-            <EnableLinksBar>false</EnableLinksBar>
+            <DisableOOBAccelerators>true</DisableOOBAccelerators>
         </component>
         <component name="Microsoft-Windows-IE-ESC" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <IEHardenAdmin>false</IEHardenAdmin>
@@ -146,9 +144,21 @@
             </UserAccounts>
             <FirstLogonCommands>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>a:\Build.cmd</CommandLine>
-                    <Description>Build</Description>
+                    <CommandLine>A:\Build.cmd</CommandLine>
+                    <Description>Phase One Installer from A Drive</Description>
                     <Order>1</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
+				                <SynchronousCommand wcm:action="add">
+                    <CommandLine>D:\Build.cmd</CommandLine>
+                    <Description>Phase One Installer from D Drive</Description>
+                    <Order>2</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
+				                <SynchronousCommand wcm:action="add">
+                    <CommandLine>E:\Build.cmd</CommandLine>
+                    <Description>Phase One Installer from E Drive</Description>
+                    <Order>3</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
             </FirstLogonCommands>
